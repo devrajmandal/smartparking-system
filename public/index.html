@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-parking"></i> Smart Parking System</h1>
+            <p>Real-time monitoring and management of vehicle entry and exit</p>
+        </header>
+
+        <div class="date-filter">
+            <label for="dateFilter">Filter by Date:</label>
+            <input type="date" id="dateFilter">
+            <button id="filterBtn">Apply Filter</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="logs-container">
+            <div class="log-section entry-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sign-in-alt"></i> Entry Logs</h2>
+                    <button id="downloadEntryBtn" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="realtime-alert entry-alert">
+                    <div class="alert-content" id="entryAlert">
+                        <p>Waiting for entry scans...</p>
+                    </div>
+                </div>
+                <div class="log-table-container">
+                    <table class="log-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Reg No.</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entryLogs">
+                            <!-- Entry logs will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="log-section exit-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sign-out-alt"></i> Exit Logs</h2>
+                    <button id="downloadExitBtn" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="realtime-alert exit-alert">
+                    <div class="alert-content" id="exitAlert">
+                        <p>Waiting for exit scans...</p>
+                    </div>
+                </div>
+                <div class="log-table-container">
+                    <table class="log-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Reg No.</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exitLogs">
+                            <!-- Exit logs will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-management">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Authorized Users</h2>
+            </div>
+            <div class="add-user-form">
+                <h3>Add New User</h3>
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label for="uid">UID:</label>
+                        <input type="text" id="uid" required placeholder="e.g., DF34891C">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required placeholder="e.g., John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="regNo">Registration No:</label>
+                        <input type="text" id="regNo" required placeholder="e.g., REG123456">
+                    </div>
+                    <button type="submit" class="submit-btn">Add User</button>
+                </form>
+            </div>
+            <div class="users-list-container">
+                <h3>Current Users</h3>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>UID</th>
+                            <th>Name</th>
+                            <th>Reg No.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersList">
+                        <!-- Users will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System | IoT Project</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
